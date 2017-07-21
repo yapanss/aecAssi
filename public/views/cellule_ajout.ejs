@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app = "AEC">
+
+<head>
+	<% include partials/template/head.ejs %>
+</head>
+
+<body ng-controller="formationController as formation" id="<%= pageId %>">
+	<div class="container-fluid">
+		<% include partials/template/nav.ejs %>
+  </div>
+	<h1  style="background-color:lightblue" class="text-center mb-5"> Enregistrer une Formation </h1>
+
+<div class="container mb-5 bg-faded">
+
+<form>
+
+<fieldset class="form-group">
+<legend class="mb-3 bg-warning">Statistiques de la Cellule</legend>
+		<div class="form-group row">
+			 <label  for="">Categorie</label>
+			 <div class="form-check">
+				 <label  class="form-check-label">
+					 <input class="form-check-input" name="FPN" type="radio" value = "f" checked>{{formation.cycle}}FPN
+				</label>
+			</div>
+			<div class="form-check">
+				<label  class="form-check-label">
+					<input class="form-check-input" name="CDN" type="radio" value = "c">{{formation.cycle}}CDN
+			 </label>
+		 </div>
+		 <div class="form-check">
+			 <label  class="form-check-label">
+				 <input class="form-check-input" name="soiree" type="radio" value="s">{{formation.cycle}}Soiree Noces
+			</label>
+		</div>
+	</div>
+
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cycle">Cycle</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.cycle" placeholder="Entrer le cycle de la formation">
+		</div>
+		<div class="form-group row">
+			<label for="date" class="form-control-label col-2 text-right mb-0">Date</label>
+			<input class="form-control col-8" type="date" ng-model = "formation.date">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="lieu">Lieu</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.lieu" placeholder="Entrer le lieu de la formation">
+		</div>
+
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="participation">Participants</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.nbrParticipants" placeholder="Entrer le nombre de participants">
+		</div>
+
+	</fieldset>
+	<fieldset class="form-group">
+		<legend class="mb-3 bg-warning">Méditation</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="texte">Texte</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.meditation.texte" placeholder="Entrer le texte de la méditation">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="formateur">Formateur</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.meditation.formateur" placeholder="Entrer le nom du formateur">
+		</div>
+	</fieldset>
+	<fieldset class="form-group">
+		<legend class="mb-3 bg-warning">Question De Partage</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="texte">Texte</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.questionPartage.texte" placeholder="Entrer le texte de la question de partage">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="formateur">Formateur</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.questionPartage.formateur" placeholder="Entrer le nom du formateur">
+		</div>
+	</fieldset>
+	<fieldset class="form-group">
+		<legend class="mb-3 bg-warning">Enseignement</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="texte">Titre</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.enseignement.titre" placeholder="Entrer le titre de l'enseignement">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="formateur">Formateur</label>
+			<input class="form-control col-8" type="text" ng-model = "formation.enseignement.formateur" placeholder="Entrer le nom du formateur">
+		</div>
+	</fieldset>
+	<div class="form-group row">
+		<div class="offset-2">
+			<button type="submit" class="btn btn-primary" ng-click = "formation.enregistreFormation()">Enregistrer</button>
+		</div>
+	</div>
+</form>
+
+
+		<% include partials/template/script.ejs %>
+</body>
+
+</html

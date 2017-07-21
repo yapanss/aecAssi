@@ -1,0 +1,185 @@
+<h1  style="background-color:lightblue" class="text-center mb-5"> Enregistrer une Cellule </h1>
+
+<div class="container mb-3" style="background-color: lightgreen">
+	<form>
+
+		<div class="row">
+		<div class="form-group col-4">
+			<label class="form-control-label">Date de la cellule</label>
+			<input type="date" class="form-control" ng-model = "cellule.dateCellule">
+		</div>
+		<div class="form-group col-4">
+			<label class="form-control-label">Lieu de la cellule</label>
+			<input type="text" class="form-control" ng-model = "cellule.lieuCellule">
+		</div>
+		<div class="form-group col-4">
+			<label class="form-control-label">Nature de la cellule</label>
+			<select  size="1" ng-model = "cellule.natureCellule" class="form-control">
+				<option value="formation">Formation</option>
+				<option value="Soiree Noces">Soirée Noces</option>
+			</select>
+		</div>
+		</div>
+	</form>
+</div>
+
+<div class="container mb-5 bg-faded" ng-if = "cellule.natureCellule == 'formation' ">
+
+<form>
+
+<fieldset class="form-group">
+<legend class="mb-3 bg-warning">Statistiques FPN</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cyclefpn">Cycle</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.cycle" placeholder="Entrer le cycle la formation prénuptiale ">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPfpn">Participants</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.nombreParticipants" placeholder="Entrer le nombre de prénuptiaux">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPfpnNvx">Nouveaux</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.nombreNouveaux" placeholder="Entrer le nombre de nouveaux prénuptiaux">
+		</div>
+
+		
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="fpnMedT">Méditation</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.meditationTexte" placeholder="Entrer le texte de la méditation">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="fpnMedF">Dirigeant</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.meditationDirigeant" placeholder="Entrer le nom du dirigeant de la méditation">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="fpnQP">Question de partage</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.questionPartage" placeholder="Entrer la question de partage">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="fpnQPD">Modérateur</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.questionPartageDirigeant" placeholder="Entrer le modérateur de la question de partage">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="fpnEns">Enseignement</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.enseignementTitre" placeholder="Entrer le titre de l'enseignement">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="fpnEnsE">Enseignant</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.fpn.enseignementDirigeant" placeholder="Entrer le nom de l'enseignant">
+		</div>
+
+	</fieldset>
+	<fieldset class="form-group">
+		<legend class="mb-3 bg-warning">Statistiques CDN</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cyclecdn">Cycle</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.cycle" placeholder="Entrer le cycle la formation des mariés">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPcdn">Participants</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.nombreParticipants" placeholder="Entrer le nombre de mariés">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPcdnNvx">Nouveaux</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.nombreNouveaux" placeholder="Entrer le nombre de nouveaux mariés">
+		</div>
+
+		
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cdnMedT">Méditation</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.meditationTexte" placeholder="Entrer le texte de la méditation">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cdnMedF">Dirigeant</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.meditationDirigeant" placeholder="Entrer le nom du dirigeant de la méditation">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cdnQP">Question de partage</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.questionPartage" placeholder="Entrer la question de partage">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cdnQPD">Modérateur</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.questionPartageDirigeant" placeholder="Entrer le modérateur de la question de partage">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cdnEns">Enseignement</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.enseignementTitre" placeholder="Entrer le titre de l'enseignement">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cdnEnsE">Enseignant</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.cdn.enseignementDirigeant" placeholder="Entrer le nom de l'enseignant">
+		</div>
+	</fieldset>
+	<fieldset class="form-group">
+		<legend class="mb-3 bg-warning">Statistiques VEA</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="veaCycle">Cycle</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.vea.cycle" placeholder="Entrer le cycle de Vie En Abondance">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPvea">Participants</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.vea.nombreParticipants" placeholder="Entrer le nombre de participants">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPveaNvx">Nouveaux</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.vea.nombreNouveaux" placeholder="Entrer le nombre de nouveaux">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="veaE">Enseignement</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.vea.enseignementTitre" placeholder="Entrer le titre de l'enseignement">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="veaED">Enseignant</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.vea.enseignementDirigeant" placeholder="Entrer le titre de l'enseignement">
+		</div>
+	</fieldset>
+	
+	<div class="form-group row">
+		<div class="offset-2">
+			<button class="btn btn-primary" ng-click = "cellule.enregistreFormation()">Enregistrer</button>
+		</div>
+	</div>
+</form>
+</div>
+
+<!-- Formulaire Soiree Noce -->
+
+<div class="container mb-5 bg-faded" ng-if = "cellule.natureCellule == 'Soiree Noces' ">
+
+<form>
+
+<fieldset class="form-group">
+<legend class="mb-3 bg-warning">Statistiques de la Soirée Noce</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="cycleSN">Cycle</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.soiree.cycle" placeholder="Entrer le cycle la Soiree Noce">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPsn">Participants</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.soiree.nombreParticipants" placeholder="Entrer le nombre de participants">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPsnNvx">Nouveaux</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.soiree.nombreNouveaux" placeholder="Entrer le nombre de nouvelles personnes">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right" for="nbrPsnVA">Vie En Abondance</label>
+			<input class="form-control col-8" type="text" ng-model = "cellule.soiree.nombreNouveaux" placeholder="Entrer le nombre de candidats à Vie En Abondance">
+		</div>		
+</fieldset>	
+		<div class="form-group row">
+		<div class="offset-2">
+			<button class="btn btn-primary" ng-click = "cellule.enregistreSoiree()">Enregistrer</button>
+		</div>
+	</div>
+</form>
+</div>
+
+
+
+
+
+
+
+
+

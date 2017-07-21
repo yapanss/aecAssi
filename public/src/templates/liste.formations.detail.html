@@ -1,0 +1,56 @@
+<h1  style="background-color:pink" class="text-center mb-5">Détail de la Formation </h1>
+
+<div class="container mb-5 bg-faded">
+
+     <table st-table="formationDetail.detailFormation"   class="table table-striped table-bordered table-responsive" style="font-size: 12px">
+<thead>
+    <tr>
+      <th colspan="13">
+        <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+      </th>
+    </tr>
+    <tr style="background-color: pink">
+      <th>Numéro</th>
+      <th>Date</th>
+      <th>Lieu</th>
+      <th>Nombre FPN</th>
+      <th>Nouveaux FPN</th>
+      <th>Nombre CDN</th>
+      <th>Nouveaux CDN</th>
+      <th>Nombre VEA</th>
+      <th>Nouveaux VEA</th>
+      <th>Total participants</th>
+      <th>Total nouveaux</th>
+      <th colspan="2" class="text-center">Actions</th>
+    </tr>
+    
+    
+</thead>
+  
+<tbody>
+  <tr ng-repeat="item in formationDetail.detailFormation">
+    <td>{{$index+1}}</td> 
+    <td>{{item.dateCellule}}</td>
+    <td>{{item.lieuCellule}}</td>
+    <td class="bg-info">{{item.fpn.nombreParticipants}}</td>
+    <td class="bg-warning">{{item.fpn.nombreNouveaux}}</td>
+    <td class="bg-info">{{item.cdn.nombreParticipants}}</td>
+    <td class="bg-warning">{{item.cdn.nombreNouveaux}}</td>
+    <td class="bg-info">{{item.vea.nombreParticipants}}</td>
+    <td class="bg-warning">{{item.vea.nombreNouveaux}}</td>
+    <td style="background-color: lightgreen">{{item.fpn.nombreParticipants + item.cdn.nombreParticipants}}</td>
+    <td style="background-color: lightgreen">{{item.fpn.nombreNouveaux + item.cdn.nombreNouveaux}}</td>
+
+  </tr>
+</tbody>
+<!-- <tfoot>
+    <tr>
+      <td colspan="5" class="text-center">
+        <div st-pagination="" st-items-by-page="itemsByPage"></div>
+      </td>
+    </tr>
+</tfoot> -->
+
+</table>
+
+</div>

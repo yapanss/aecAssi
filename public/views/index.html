@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="AEC">
+<head>
+	<title>lmkppli</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/ui-grid.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/lmkstyle.css">
+	<link rel="stylesheet" type="text/css" href="css/lmkstyle2.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css"> -->
+</head>
+<body id="debut">
+
+<img src="/images/fleurmariage.jpg" style="width : 100%; height:300px" alt="mariage">
+<nav class=" navbar navbar-toggleable-sm mb-5 bg-faded">
+  <a class="navbar-brand m-0 mr-1" ui-sref="home">
+    <img src="/images/logoaec.png">
+  </a>
+  <div class="navbar-nav nav-pills">
+    <a class="nav-item nav-link  active " ui-sref="home">Home </a>
+
+
+    <div class="dropdown">
+        <a href="" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown"> Cellule </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" ui-sref="Ajout_Cellule">Ajouter Cellule</a>
+          <a class="dropdown-item" ui-sref="Liste_Formations">Liste Formations</a>
+          <a class="dropdown-item" ui-sref="Liste_Soirees">Liste Soirees Noces</a>
+          <a class="dropdown-item" ui-sref="Ajout_Participant">Ajouter Participant</a>
+          <a class="dropdown-item" ui-sref="Liste_Participants">Liste Participants</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown">Evangelisation </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item bg-success" ui-sref="Ajout_Evangelisation">Ajout Evangelisation</a>
+          <a class="dropdown-item  bg-faded" ui-sref="Liste_Evangelisations">Liste Evangelisations</a>
+          <a class="dropdown-item " ui-sref="Ajout_Evangelise">Ajouter Evangelise</a>
+          <a class="dropdown-item " ui-sref="Liste_Evangelises">Liste Evangelises</a>
+        </div>
+    </div>
+
+
+
+</div>
+</nav>
+
+
+	<!-- <div ng-include = " 'views/partials/template/nav.html' "></div> -->
+	<ui-view>
+      <div class="text-center initial-loading">
+        <h2>Loading Site...</h2>
+      </div>
+    </ui-view>
+<!-- </div> -->
+
+<!-- <footer class="panel-footer">
+	<div class="container">
+		<div class="row">
+			<h1>Merci</h1>
+			<section id="adresse">
+				<p>Adresse: </p><br>
+				<p>Koumassi Sicogi près du Foyer des Jeunes</p>
+			</section>
+		</div>	
+
+	</div>
+	
+</footer> -->
+	
+	<script src="lib/tether.min.js"></script>
+	<script src="lib/jquery-3.1.1.min.js"></script>
+ 	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/angular.min.js"></script>
+	<script src="lib/angular-ui-router.min.js"></script>
+	<script src="lib/smart-table.min.js"></script>
+	<!-- <script src="lib/angular-animate.min.js"></script> -->
+
+	<script src="src/modules/aec.module.js"></script>
+	<script src="src/routes.js"></script>
+
+
+	<script src="src/services/cellule.service.js"></script>
+	<script src="src/services/participant.service.js"></script>
+	<script src="src/services/evangelisation.service.js"></script>
+	<script src="src/services/evangelise.service.js"></script>
+	<!-- <script src="src/lmkuser/factories/auth_interceptor.factory.js"></script> -->
+	<!-- <script src="src/lmkuser/factories/auth_token.factory.js"></script> -->
+
+	<!-- <script src="src/lmkuser/services/saisie.service.js"></script> -->
+	<!-- <script src="src/lmkmain/controllers/main.controller.js"></script> -->
+
+	<script src="src/controllers/cellule.controller.js"></script>
+	<script src="src/controllers/participant.controller.js"></script>
+	<script src="src/controllers/formation_liste.controller.js"></script>
+	<script src="src/controllers/formation_detail.controller.js"></script>
+	<script src="src/controllers/soiree_liste.controller.js"></script>
+	<script src="src/controllers/participant_liste.controller.js"></script>
+	<script src="src/controllers/evangelisation.controller.js"></script>
+	<script src="src/controllers/evangelisation_liste.controller.js"></script>
+	<script src="src/controllers/evangelise.controller.js"></script>
+	<script src="src/controllers/evangelise_liste.controller.js"></script>
+	<!-- <script src="src/lmkadmin/controllers/classe_edite.controller.js"></script> -->
+
+	<!-- <script src="src/lmkuser/controllers/saisie.controller.js"></script> -->
+	<!-- <script src="src/lmkuser/controllers/consultation.controller.js"></script> -->
+
+</body>
+</html>

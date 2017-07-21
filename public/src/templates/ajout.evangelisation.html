@@ -1,0 +1,44 @@
+<div class="container-fluid">
+		<% include partials/template/nav.ejs %>
+  </div>
+		<h1  style="background-color:lightblue" class="text-center mb-5"> Enregistrer une evangelisation </h1>
+
+<div class="container mb-5 bg-faded">
+
+<form>
+
+<fieldset class="form-group">
+	<legend class="text-center mb-3">Statistiques de l'Evangelisation</legend>
+
+			<div class="form-group row">
+				<label for="date" class="form-control-label col-2 text-right my-auto">Date</label>
+				<input class="form-control col-8" type="date" ng-model = "evangelisation.date">
+			</div>
+			<div class="form-group row">
+				<label class="form-control-label col-2 text-right my-auto" for="lieu">Lieu</label>
+				<input class="form-control col-8" type="text" ng-model = "evangelisation.lieu" placeholder="Entrer le lieu">
+			</div>
+			<div class="form-group row">
+				<label class="form-control-label col-2 text-right my-auto" for="evangelistes">Evangelistes</label>
+				<input class="form-control col-8" type="text" ng-model = "evangelisation.evangelistes" placeholder="Entrer les noms des évangélistes en les séparant par des tirets">
+			</div>
+
+			<div class="form-group row">
+				<label class="form-control-label col-2 text-right my-auto" for="prospectus">Prospectus distribués</label>
+				<input class="form-control col-8" type="text" ng-model = "evangelisation.prospectus" placeholder="Nombre de prospectus distribués">
+			</div>
+			<div class="form-group row">
+				<label class="form-control-label col-2 text-right my-auto" for="contacts">Personnes contactées</label>
+				<input class="form-control col-8" type="text" ng-model = "evangelisation.nbrContacts" placeholder="Entrer le nombre de contacts">
+			</div>
+
+			<div class="form-group row">
+				<div class="offset-2">
+					<button class="btn btn-primary" ng-click = "evangelisation.enregistreEvangelisation()">Enregistrer</button>
+				</div>
+			</div>
+
+</fieldset>
+
+</form>
+</div>

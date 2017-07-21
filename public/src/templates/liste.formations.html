@@ -1,0 +1,180 @@
+<h1  style="background-color:pink" class="text-center mb-5" ng-if="formation.aDetailler == false">Liste des Formations </h1>
+<h1  style="background-color:pink" class="text-center mb-5" ng-if="formation.aDetailler == true">Formation du {{formation.detailFormation.dateCellule}} à {{formation.detailFormation.lieuCellule}} </h1>
+
+<div class="container mb-5" ng-if="formation.aDetailler == false">
+
+<table st-table="formation.listeFormations"   class="table table-striped table-bordered table-responsive" style="font-size: 12px">
+<thead>
+    <tr>
+      <th colspan="13">
+        <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+      </th>
+    </tr>
+    <tr style="background-color: pink">
+      <th>Numéro</th>
+      <th>Date</th>
+      <th>Lieu</th>
+      <th>Nombre FPN</th>
+      <th>Nouveaux FPN</th>
+      <th>Nombre CDN</th>
+      <th>Nouveaux CDN</th>
+      <th>Nombre VEA</th>
+      <th>Nouveaux VEA</th>
+      <th>Total participants</th>
+      <th>Total nouveaux</th>
+      <th colspan="3" class="text-center">Actions</th>
+    </tr>    
+</thead>
+<tbody>
+  <tr ng-repeat="item in formation.listeFormations">
+    <td>{{$index+1}}</td> 
+    <td ng-if="formation.edite[$index]==false">{{item.dateCellule}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="date" ng-model="item.dateCellule"></td>
+    <td ng-if="formation.edite[$index]==false">{{item.lieuCellule}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="text" ng-model="item.lieuCellule"></td>
+    <td class="bg-info" ng-if='formation.edite[$index]==false'>{{item.fpn.nombreParticipants}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="text" ng-model="item.fpn.nombreParticipants"></td>
+    
+    <td class="bg-warning" ng-if='formation.edite[$index]==false'>{{item.fpn.nombreNouveaux}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="text" ng-model="item.fpn.nombreNouveaux"></td>
+    
+    <td class="bg-info" ng-if='formation.edite[$index]==false'>{{item.cdn.nombreParticipants}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="text" ng-model="item.cdn.nombreParticipants"></td>
+
+    <td class="bg-warning" ng-if='formation.edite[$index]==false'>{{item.cdn.nombreNouveaux}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="text" ng-model="item.cdn.nombreNouveaux"></td>
+
+    <td class="bg-info" ng-if='formation.edite[$index]==false'>{{item.vea.nombreParticipants}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="text" ng-model="item.vea.nombreParticipants"></td>
+
+    <td class="bg-warning" ng-if='formation.edite[$index]==false'>{{item.vea.nombreNouveaux}}</td>
+    <td ng-if="formation.edite[$index]==true"><input type="text" ng-model="item.vea.nombreNouveaux"></td>
+
+    <td ng-if='formation.edite[$index]==false' style="background-color: lightgreen">{{item.fpn.nombreParticipants + item.cdn.nombreParticipants}}</td>
+    <td ng-if='formation.edite[$index]==false' style="background-color: lightgreen">{{item.fpn.nombreNouveaux + item.cdn.nombreNouveaux}}</td>
+
+
+    <td ng-if='formation.edite[$index]==false'><button class="btn btn-danger" ng-click="formation.supprimeFormation($index)">supprimer</button></td>
+    
+    <td ng-if='formation.edite[$index]==false'><button class="btn btn-info" ng-click="formation.detailleFormation($index)">Détails</button></td>
+    
+    <td><button ng-if="formation.edite[$index]==false" ng-click="formation.editeFormation($index)" class="btn btn-primary">
+        Editer
+      </button>
+    </td>
+
+    <td ng-if="formation.edite[$index]==true">
+      <button ng-click="formation.modifieFormation($index)" class="btn btn-success">Modifier</button>
+    </td>
+    
+    <td ng-if="formation.edite[$index]==true">
+      <button ng-click="formation.retourne($index)">Retour</button>
+    </td>
+
+  </tr>
+</tbody>
+<!-- <tfoot>
+    <tr>
+      <td colspan="5" class="text-center">
+        <div st-pagination="" st-items-by-page="itemsByPage"></div>
+      </td>
+    </tr>
+</tfoot> -->
+
+</table>
+
+</div>
+
+<!-- AFFICHAGE DU DETAIL D'UNE FORMATION -->
+
+<div class="container mb-5" ng-if="formation.aDetailler == true">
+
+<!-- Détail FPN -->
+<h2>Formation Prénuptiale</h2>
+<table st-table="formation.detailFormation"  class="table table-striped table-bordered table-responsive mb-3 text-center" style="font-size: 12px">
+
+<thead>
+    
+    <tr style="background-color: #2a75ff">
+      <th>Cycle</th>
+      <th>Nombre FPN</th>
+      <th>Nouveaux FPN</th>
+      <th>Méditation</th>
+      <th>Dirigeant Méditation</th>
+      <th>Enseignement</th>
+      <th>Enseignant</th>
+      
+    </tr>   
+</thead>
+  
+<tbody>
+  <tr >
+    <td class="bg-info">{{formation.detailFormation.fpn.cycle}}</td>
+    <td class="bg-info">{{formation.detailFormation.fpn.nombreParticipants}}</td>
+    <td class="bg-warning">{{formation.detailFormation.fpn.nombreNouveaux}}</td>
+    <td class="bg-warning">{{formation.detailFormation.fpn.meditationTexte}}</td>
+    <td class="bg-info">{{formation.detailFormation.fpn.meditationDirigeant}}</td>
+    <td class="bg-warning">{{formation.detailFormation.fpn.enseignementTitre}}</td>
+    <td class="bg-info">{{formation.detailFormation.fpn.enseignementDirigeant}}</td>
+  </tr>
+</tbody>
+
+</table>
+
+<!-- Cellule Des Nouveaux -->
+<h2>Cellule Des Nouveaux</h2>
+<table st-table="formation.detailFormation"  class="table table-striped table-bordered table-responsive mb-3 text-center" style="font-size: 12px">
+<thead>    
+    <tr style="background-color: #26ffea">
+      <th>Cycle</th>
+      <th>Nombre CDN</th>
+      <th>Nouveaux CDN</th>
+      <th>Méditation</th>
+      <th>Dirigeant Méditation</th>
+      <th>Enseignement</th>
+      <th>Enseignant</th>  
+    </tr>   
+</thead>
+  
+<tbody>
+  <tr>
+    <td class="bg-info">{{formation.detailFormation.cdn.cycle}}</td>
+    <td class="bg-info">{{formation.detailFormation.cdn.nombreParticipants}}</td>
+    <td class="bg-warning">{{formation.detailFormation.cdn.nombreNouveaux}}</td>
+    <td class="bg-warning">{{formation.detailFormation.cdn.meditationTexte}}</td>
+    <td class="bg-info">{{formation.detailFormation.cdn.meditationDirigeant}}</td>
+    <td class="bg-warning">{{formation.detailFormation.cdn.enseignementTitre}}</td>
+    <td class="bg-info">{{formation.detailFormation.cdn.enseignementDirigeant}}</td>
+  </tr>
+</tbody>
+
+</table>
+
+<!-- Vie En Abondance -->
+<h2>Vie En Abondance</h2>
+<table class="table table-striped table-bordered table-responsive text-center" style="font-size: 12px">
+
+<thead>    
+    <tr style="background-color: #80d0d0">
+      <th>Cycle</th>
+      <th>Nombre Participants</th>
+      <th>Nouveaux</th>
+      <th>Thème</th>
+      <th>Dirigeant</th>    
+    </tr>   
+</thead>
+  
+<tbody>
+  <tr >
+    <td class="bg-info">{{formation.detailFormation.vea.cycle}}</td>
+    <td class="bg-info">{{formation.detailFormation.vea.nombreParticipants}}</td>
+    <td class="bg-warning">{{formation.detailFormation.vea.nombreNouveaux}}</td>
+    <td class="bg-warning">{{formation.detailFormation.vea.enseignementTitre}}</td>
+    <td class="bg-info">{{formation.detailFormation.vea.enseignementDirigeant}}</td>
+  </tr>
+</tbody>
+
+</table>
+
+  <button class="btn btn-primary" ng-click="formation.retourListeFormations()">Retour à la liste</button>
+</div>

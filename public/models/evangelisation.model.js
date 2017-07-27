@@ -2,14 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var EvangelisationSchema = new Schema({
-  nombreContacts:{
-    type:Number,
-    required:true
-  },
-  prospectusDistribues:{
-    type:Number,
-    required:true
-  },
+  nombreContacts:Number, 
+  prospectusDistribues:Number,
   dateEvangelisation:Date,
   evangelistes:Array,
   lieuEvangelisation:String

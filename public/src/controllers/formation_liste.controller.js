@@ -9,6 +9,7 @@ function formationListeController(listeFormations, celluleService){
 	var ctrl = this;
 	ctrl.edite = [];
 	ctrl.listeFormations = listeFormations;
+	// ctrl.itemModifie = listeFormations;
 	ctrl.aDetailler = false;
 
 	for (var i = 0; i < ctrl.listeFormations.length; i++) {
@@ -43,12 +44,13 @@ function formationListeController(listeFormations, celluleService){
 	ctrl.editeFormation = function(itemIndex){
 		console.log('ctrl.edite = ', ctrl.edite);
 		ctrl.edite[itemIndex] = true;
-		ctrl.formationEdite = ctrl.listeFormations[itemIndex];
-		// console.log("ID a EDITER :", ctrl.classeEdite);
+		ctrl.formationEdite = listeFormations[itemIndex];
+		console.log("Formation a EDITER :", ctrl.formationEdite);
 	};
 	ctrl.modifieFormation = function(itemIndex){
-		console.log("CLASSE EDITEE", ctrl.formationEdite);
+		console.log("FORMATION EDITEE", ctrl.formationEdite);
 		ctrl.edite[itemIndex]=false;
+		// celluleService.modifieFormation(ctrl.formationEdite._id, ctrl.formationEdite)
 		celluleService.modifieFormation(ctrl.formationEdite._id, ctrl.formationEdite)
 		.then(function success(result){
 			console.log('RESULTAT :', result.data);
@@ -56,6 +58,9 @@ function formationListeController(listeFormations, celluleService){
 		}, function error(){
 			console.log('OOPS, UNE ERREUR EST SURVENUE...');
 		});
+	};
+	ctrl.neModifiePasFormation = function(itemIndex){
+		ctrl.edite[itemIndex]=false;
 	};
 	ctrl.retourne = function(){
 		ctrl.edite[itemIndex]=false;

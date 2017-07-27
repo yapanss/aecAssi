@@ -135,10 +135,24 @@ function RoutesConfig($stateProvider, $urlRouterProvider){
 	})
 	// PERSONNEL
 
-	.state('personnel',{
-		url:'/personnel',
-		templateUrl:'src/lmkadmin/templates/personnel.html',
-		controller: 'personnelController as personnel'
+	.state('Ajout_Personnel',{
+		url:'/Ajout_Personnel',
+		templateUrl:'src/templates/ajout.personnel.html',
+		controller:'personnelController as personnel'
+	})
+	.state('Liste_Personnel',{
+		url:'/Liste_Personnel',
+		templateUrl:'src/templates/liste.personnel.html',
+		controller:'personnelListeController as personnel',
+		resolve:{
+				listePersonnel:['personnelService',function(personnelService){
+					   return personnelService.recupereListePersonnel()
+					    .then(function(){
+					    	return personnelService.listePersonnel;
+					    })								
+				}]
+			}
+
 	})
 	
 	// Accueil

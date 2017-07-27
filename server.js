@@ -11,7 +11,7 @@ var Evangelisation = require('./public/models/evangelisation.model');
 var Soiree = require('./public/models/soireenoce.model');
 var Participant = require('./public/models/participant.model');
 var Evangelise = require('./public/models/evangelise.model');
-
+var Personnel = require('./public/models/personnel.model');
 
 // Frontend Routes
 // var ajoutEvangelisationRoute = require('./public/routes/frontend/evangelisation_ajout');
@@ -26,6 +26,7 @@ var apiEvangelisation = require('./public/routes/backend/evangelisation.route.js
 var apiSoiree = require('./public/routes/backend/soireenoce.route.js');
 var apiParticipant = require('./public/routes/backend/participant.route.js');
 var apiEvangelise = require('./public/routes/backend/evangelise.route.js');
+var apiPersonnel = require('./public/routes/backend/personnel.route.js');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,7 +43,8 @@ app.set('FormationFile', Formation);
 app.set('EvangelisationFile', Evangelisation);
 app.set('SoireeFile', Soiree);
 app.set('EvangeliseFile', Evangelise);
-app.set('PartcipantFile', Participant);
+app.set('ParticipantFile', Participant);
+app.set('PersonnelFile', Personnel);
 
 
 app.locals.siteName = "Arc En Christ";
@@ -61,6 +63,11 @@ app.get('/', function(req, res) {
 
 app.use(apiFormation);
 app.use(apiSoiree);
+app.use(apiParticipant);
+app.use(apiEvangelisation);
+app.use(apiEvangelise);
+app.use(apiPersonnel);
+
 
 app.listen(app.get('port'), function(){
   console.log('Listening on port :' , app.get('port'));

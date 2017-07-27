@@ -1,18 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-// All the Evanelisations
+// All the Evangelises
 
 router.route('/api/evangelise')
 .post(function(req, res){
   var Evangelise = req.app.get('EvangeliseFile');
   var evangelise = new Evangelise;
 
-  Evangelisation.nombreContacts = req.body.nombreContacts;
-  Evangelisation.prospectusDistribues = req.body.prospectusDistribues;
-  Evangelisation.date = req.body.date;
-  Evangelisation.evangelistes = req.body.evangelistes;
-  Evangelisation.lieu = req.body.lieu;
+  evangelise.nom = req.body.nom;
+  evangelise.contact = req.body.contact;
+  evangelise.dateEvangelisation = req.body.dateEvangelisation;
+  evangelise.lieuEvangelisation = req.body.lieuEvangelisation;
 
   evangelise.save(function(err){
     if(err){
@@ -26,6 +25,7 @@ router.route('/api/evangelise')
   });
 })
 .get(function(req, res){
+  var Evangelise = req.app.get('EvangeliseFile');
 	Evangelise.find(function(err, evangelises){
         if(err){
         	res.send(err);
@@ -36,10 +36,11 @@ router.route('/api/evangelise')
     });
 });
 
-// One Evangelisation
+// One evangelise
 
-router.route('/evangelise/:id')
+router.route('/api/evangelise/:evangelise_id')
 .delete(function(req, res){
+  var Evangelise = req.app.get('EvangeliseFile');
   Evangelise.remove(
     {_id:req.params.evangelise_id}, function(err, evangelise){
       if(err){
@@ -51,26 +52,35 @@ router.route('/evangelise/:id')
     })
 })
 .put(function(req, res){
+  var Evangelise = req.app.get('EvangeliseFile');
   Evangelise.findById(req.params.evangelise_id, function(err, evangelise){
     if(err){
       res.send(err);
     }
 
-    if(req.body.nombreContacts){
-      evangelisation.nombreContacts = req.body.nombreContacts;
+    if(req.body.nom){
+      evangelise.nom = req.body.nom;
     }
-    if(req.body.prospectusDistribues){
-      evangelisation.prospectusDistribues = req.body.prospectusDistribues;
+    
+    if(req.body.dateEvangelisation){
+      evangelise.dateEvangelisation = req.body.dateEvangelisation;
     }
-    if(req.body.date){
-      evangelisation.date = req.body.date;
+    
+    if(req.body.lieuEvangelisation){
+      evangelise.lieuEvangelisation = req.body.lieuEvangelisation;
     }
-    if(req.body.evangelistes){
-      evangelisation.evangelistes = req.body.evangelistes;
+    if(req.body.contact){
+      evangelise.contact = req.body.contact;
     }
-    if(req.body.lieu){
-      evangelisation.lieu = req.body.lieu;
-    }
+    evangelise.save(function(err){
+      if(err){
+        res.send(err);
+      }
+      else{
+        res.json({message : "Evangelise modifié avec succès !"});
+      }
+    });
+
   });
 });
 

@@ -9,15 +9,22 @@ var ParticipantSchema = new Schema({
   cycle:String,
   contact:{
     reseau:{
-      type:String
+      reseau1:String,
+      reseau2:String
     },
     numero:{
-      type:String
+      numero1:String,
+      numero2:String
     }
     
   },
   dateArrivee:Date,
-  formation:String,
+  typeFormation:String,
+  invitePar:String,
+  religion:String,
+  statutMatrimonial:String,
+  sexe:String,
+  lieuFormation:String
 
 });
 

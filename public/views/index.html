@@ -40,7 +40,13 @@
           <a class="dropdown-item " ui-sref="Liste_Evangelises">Liste Evangelises</a>
         </div>
     </div>
-
+    <div class="dropdown">
+        <a href="" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown">Utilisateurs </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item bg-success" ui-sref="Ajout_Personnel">Ajout Utilisateur</a>
+          <a class="dropdown-item  bg-faded" ui-sref="Liste_Personnel">Liste Utilisateurs</a>
+        </div>
+    </div>
 
 
 </div>
@@ -82,6 +88,7 @@
 
 
 	<script src="src/services/cellule.service.js"></script>
+	<script src="src/services/personnel.service.js"></script>
 	<script src="src/services/participant.service.js"></script>
 	<script src="src/services/evangelisation.service.js"></script>
 	<script src="src/services/evangelise.service.js"></script>
@@ -92,6 +99,8 @@
 	<!-- <script src="src/lmkmain/controllers/main.controller.js"></script> -->
 
 	<script src="src/controllers/cellule.controller.js"></script>
+	<script src="src/controllers/personnel.controller.js"></script>
+	<script src="src/controllers/personnel_liste.controller.js"></script>
 	<script src="src/controllers/participant.controller.js"></script>
 	<script src="src/controllers/formation_liste.controller.js"></script>
 	<script src="src/controllers/formation_detail.controller.js"></script>

@@ -9,8 +9,8 @@ function evangelisationController(evangelisationService){
   ctrl.nombreContacts = "";
   ctrl.prospectusDistribues = "";
   ctrl.evangelistes = [];
-  ctrl.date = "";
-  ctrl.lieu = "";
+  ctrl.dateEvangelisation = "";
+  ctrl.lieuEvangelisation = "";
 
   ctrl.enregistreEvangelisation = function(){
     evangelisationService.enregistreEvangelisation(ctrl)

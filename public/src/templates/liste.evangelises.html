@@ -1,86 +1,71 @@
-<h1  style="background-color:lightblue" class="text-center mb-5"> Enregistrer une Formation </h1>
+<h1  style="background-color:#b9b276" class="text-center mb-5">Liste des evangelises </h1>
 
-<div class="container mb-5 bg-faded">
 
-<form>
+<div class="container mb-5">
 
-<fieldset class="form-group">
-<legend class="mb-3 bg-warning">Statistiques de la Cellule</legend>
-		<div class="form-group row">
-			 <label  for="">Categorie</label>
-			 <div class="form-check">
-				 <label  class="form-check-label">
-					 <input class="form-check-input" name="FPN" type="radio" value = "f" checked>{{formation.cycle}}FPN
-				</label>
-			</div>
-			<div class="form-check">
-				<label  class="form-check-label">
-					<input class="form-check-input" name="CDN" type="radio" value = "c">{{formation.cycle}}CDN
-			 </label>
-		 </div>
-		 <div class="form-check">
-			 <label  class="form-check-label">
-				 <input class="form-check-input" name="soiree" type="radio" value="s">{{formation.cycle}}Soiree Noces
-			</label>
-		</div>
-	</div>
+<table st-table="evangelise.listeEvangelises"  class="table table-striped table-bordered table-responsive" style="font-size: 12px">
+<thead>
+    <tr>
+      <th colspan="8">
+        <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+      </th>
+    </tr>
+    <tr style="background-color: #669c89">
+      <th>Numéro</th>
+      <th>Nom et Prénoms</th>
+      <th>Réseau tel</th>
+      <th>Numéro tel</th>
+      <th>Date Evangélisation</th>
+      <th>Lieu Evangélisation</th>
+      <th colspan="2" class="text-center">Actions</th>
+    </tr>    
+</thead>
+<tbody>
+  <tr ng-repeat="item in evangelise.listeEvangelises">
+    <td>{{$index+1}}</td> 
+    <td ng-if="evangelise.edite[$index]==false">{{item.nom}}</td>
+    <td ng-if="evangelise.edite[$index]==true"><input type="text" ng-model="item.nom"></td>
+    <td ng-if="evangelise.edite[$index]==false">{{item.contact.reseau}}</td>
+    <td ng-if="evangelise.edite[$index]==true"><input type="text" ng-model="item.contact.reseau"></td>
+    <td ng-if='evangelise.edite[$index]==false'>{{item.contact.numero}}</td>
+    <td ng-if="evangelise.edite[$index]==true"><input type="text" ng-model="item.contact.numero"></td>
+    
+    <td ng-if='evangelise.edite[$index]==false'>{{item.dateEvangelisation}}</td>
+    <td ng-if="evangelise.edite[$index]==true"><input type="date" ng-model="item.dateEvangelisation"></td>
 
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="cycle">Cycle</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.cycle" placeholder="Entrer le cycle de la formation">
-		</div>
-		<div class="form-group row">
-			<label for="date" class="form-control-label col-2 text-right mb-0">Date</label>
-			<input class="form-control col-8" type="date" ng-model = "formation.date">
-		</div>
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="lieu">Lieu</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.lieu" placeholder="Entrer le lieu de la formation">
-		</div>
+    <td ng-if='evangelise.edite[$index]==false'>{{item.lieuEvangelisation}}</td>
+    <td ng-if="evangelise.edite[$index]==true"><input type="text" ng-model="item.lieuEvangelisation"></td>
 
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="participation">Participants</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.nbrParticipants" placeholder="Entrer le nombre de participants">
-		</div>
+    <td ng-if='evangelise.edite[$index]==false'><button class="btn btn-danger" ng-click="evangelise.supprimeEvangelise($index)">supprimer</button></td>
+    
+    <td ng-if="evangelise.edite[$index]==false"><button ng-click="evangelise.editeEvangelise($index)" class="btn btn-primary">
+        Editer
+      </button>
+    </td>
 
-	</fieldset>
-	<fieldset class="form-group">
-		<legend class="mb-3 bg-warning">Méditation</legend>
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="texte">Texte</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.meditation.texte" placeholder="Entrer le texte de la méditation">
-		</div>
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="formateur">Formateur</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.meditation.formateur" placeholder="Entrer le nom du formateur">
-		</div>
-	</fieldset>
-	<fieldset class="form-group">
-		<legend class="mb-3 bg-warning">Question De Partage</legend>
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="texte">Texte</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.questionPartage.texte" placeholder="Entrer le texte de la question de partage">
-		</div>
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="formateur">Formateur</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.questionPartage.formateur" placeholder="Entrer le nom du formateur">
-		</div>
-	</fieldset>
-	<fieldset class="form-group">
-		<legend class="mb-3 bg-warning">Enseignement</legend>
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="texte">Titre</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.enseignement.titre" placeholder="Entrer le titre de l'enseignement">
-		</div>
-		<div class="form-group row">
-			<label class="form-control-label col-2 text-right" for="formateur">Formateur</label>
-			<input class="form-control col-8" type="text" ng-model = "formation.enseignement.formateur" placeholder="Entrer le nom du formateur">
-		</div>
-	</fieldset>
-	<div class="form-group row">
-		<div class="offset-2">
-			<button type="submit" class="btn btn-primary" ng-click = "formation.enregistreFormation()">Enregistrer</button>
-		</div>
-	</div>
-</form>
+    <td ng-if="evangelise.edite[$index]==true">
+      <button ng-click="evangelise.modifieEvangelise($index)" class="btn btn-success">Modifier</button>
+    </td>
+    
+    <td ng-if="evangelise.edite[$index]==true">
+      <button class="btn btn-default" ng-click="evangelise.neModifiePasEvangelise($index)">Retour</button>
+    </td>
+
+  </tr>
+</tbody>
+<!-- <tfoot>
+    <tr>
+      <td colspan="5" class="text-center">
+        <div st-pagination="" st-items-by-page="itemsByPage"></div>
+      </td>
+    </tr>
+</tfoot> -->
+
+</table>
+
 </div>
+
+<div ng-if="evangelise.aDetailler == true">
+  <button class="btn btn-primary" ng-click="evangelise.retourListeEvangelises()">Retour à la liste</button>
+</div>
+ 

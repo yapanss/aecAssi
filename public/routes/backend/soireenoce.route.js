@@ -8,13 +8,12 @@ router.route('/api/soireenoce')
   var Soiree = req.app.get('SoireeFile');
   var soiree = new Soiree;
 
-  soiree.cycle = req.body.cycle;
+  soiree.cycle = req.body.soiree.cycle;
   soiree.dateCellule = req.body.dateCellule;
   soiree.lieuCellule = req.body.lieuCellule;
-  soiree.nombreParticipants = req.body.nombreParticipants;
-  soiree.nombreVieAbondance = req.body.nombreVieAbondance;
-  soiree.nombreNouveaux = req.body.nombreNouveaux;
-
+  soiree.nombreParticipants = req.body.soiree.nombreParticipants;
+  soiree.nombreVieAbondance = req.body.soiree.nombreVieAbondance;
+  soiree.nombreNouveaux = req.body.soiree.nombreNouveaux;
 
   soiree.save(function(err){
     if(err){
@@ -22,7 +21,7 @@ router.route('/api/soireenoce')
     }
     else{
       res.json({
-        message:"soiree noce enregistrée avec succès !"
+        message:"soiree noces enregistrée avec succès !"
       });
     }
   });
@@ -41,7 +40,7 @@ router.route('/api/soireenoce')
 
 // One Evangelisation
 
-router.route('/soiree/:id')
+router.route('/api/soireenoce/:soiree_id')
 .delete(function(req, res){
   var Soiree = req.app.get('SoireeFile');
   Soiree.remove(
@@ -57,6 +56,9 @@ router.route('/soiree/:id')
 .put(function(req, res){
   var Soiree = req.app.get('SoireeFile');
   Soiree.findById(req.params.soiree_id, function(err, soiree){
+
+    console.log("REQ BODY :", req.body);
+
     if(err){
       res.send(err);
     }
@@ -79,6 +81,17 @@ router.route('/soiree/:id')
     if(req.body.cycle){
       soiree.cycle = req.body.cycle;
     }
+
+    soiree.save(function(err){
+      if(err){
+        res.send(err);
+      }
+      else{
+        console.log("soiree === ", soiree);
+        res.json({message: "Soiree Noces modifiée avec succès !"});
+      }
+    });
+
   });
 });
 

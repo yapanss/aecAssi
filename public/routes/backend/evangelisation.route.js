@@ -8,11 +8,11 @@ router.route('/api/evangelisation')
   var Evangelisation = req.app.get('EvangelisationFile');
   var evangelisation = new Evangelisation;
 
-  Evangelisation.nombreContacts = req.body.nombreContacts;
-  Evangelisation.prospectusDistribues = req.body.prospectusDistribues;
-  Evangelisation.date = req.body.date;
-  Evangelisation.evangelistes = req.body.evangelistes;
-  Evangelisation.lieu = req.body.lieu;
+  evangelisation.nombreContacts = req.body.nombreContacts;
+  evangelisation.prospectusDistribues = req.body.prospectusDistribues;
+  evangelisation.dateEvangelisation = req.body.dateEvangelisation;
+  evangelisation.evangelistes = req.body.evangelistes;
+  evangelisation.lieuEvangelisation = req.body.lieuEvangelisation;
 
   evangelisation.save(function(err){
     if(err){
@@ -26,6 +26,7 @@ router.route('/api/evangelisation')
   });
 })
 .get(function(req, res){
+  var Evangelisation = req.app.get('EvangelisationFile');
 	Evangelisation.find(function(err, evangelisations){
         if(err){
         	res.send(err);
@@ -38,8 +39,9 @@ router.route('/api/evangelisation')
 
 // One Evangelisation
 
-router.route('/evangelisation/:id')
+router.route('/api/evangelisation/:evangelisation_id')
 .delete(function(req, res){
+  var Evangelisation = req.app.get('EvangelisationFile');
   Evangelisation.remove(
     {_id:req.params.evangelisation_id}, function(err, evangelisation){
       if(err){
@@ -51,6 +53,7 @@ router.route('/evangelisation/:id')
     })
 })
 .put(function(req, res){
+  var Evangelisation = req.app.get('EvangelisationFile');
   Evangelisation.findById(req.params.evangelisation_id, function(err, evangelisation){
     if(err){
       res.send(err);
@@ -62,15 +65,25 @@ router.route('/evangelisation/:id')
     if(req.body.prospectusDistribues){
       evangelisation.prospectusDistribues = req.body.prospectusDistribues;
     }
-    if(req.body.date){
-      evangelisation.date = req.body.date;
+    if(req.body.dateEvangelisation){
+      evangelisation.dateEvangelisation = req.body.dateEvangelisation;
     }
     if(req.body.evangelistes){
       evangelisation.evangelistes = req.body.evangelistes;
     }
-    if(req.body.lieu){
-      evangelisation.lieu = req.body.lieu;
+    if(req.body.lieuEvangelisation){
+      evangelisation.lieuEvangelisation = req.body.lieuEvangelisation;
     }
+
+    evangelisation.save(function(err){
+      if(err){
+        res.send(err);
+      }
+      else{
+        res.json({message : "Evangelisation modifiée avec succès"});
+      }
+    });
+
   });
 });
 

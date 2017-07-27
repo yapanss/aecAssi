@@ -1,0 +1,72 @@
+
+<h1  style="background-color:#e2bc75" class="text-center mb-5"> Enregistrer un participant </h1>
+
+<div class="container mb-5 bg-faded">
+
+<form>
+
+<fieldset class="form-group">
+	<legend class="text-center mb-3">Données du participant</legend>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="nom">Nom et prénoms</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.nom" placeholder="Entrer les nom et prénoms">
+		</div>
+		<div class="form-group row">
+			<label for="date" class="form-control-label col-2 text-right	my-auto">Date d'Arrivée</label>
+			<input class="form-control col-8" type="date" ng-model = "participant.dateArrivee">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="lieu">Lieu de Formation</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.lieuFormation" placeholder="Entrer le lieu">
+		</div>
+		<div class="form-group row">
+				<label class="form-control-label col-2 text-right my-auto" for="religion">Communauté religieuse</label>
+				<input class="form-control col-8" type="text" ng-model = "participant.religion" placeholder="Catholique, évangélique, protestant, musulman">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="invite">Invité par </label>
+			<input class="form-control col-8" type="text" ng-model = "participant.invitePar" placeholder="Par qui ou comment a-t-il été invité">
+		</div>
+
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for=Statut">Statut matrimonial</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.statutMatrimonial" participant.statutMatrimonial" placeholder="Marié, fiancé,concubain ou célibataire">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for=reseau1">Réseau 1</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.contact.reseau.reseau1" placeholder="Moov, Mtn ou Orange">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="reseau2">Réseau 2</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.contact.reseau.reseau2" placeholder="Moov, Mtn ou Orange">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="numero1">Numéro 1</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.contact.numero.numero1" placeholder="Premier numéro">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="numero2">Numéro 2</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.contact.numero.numero2" placeholder="Deuxième numéro">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="sexe">Sexe</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.sexe" placeholder="M ou F">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="cycle">Cycle</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.cycle" placeholder="Cycle de formation">
+		</div>
+		<div class="form-group row">
+			<label class="form-control-label col-2 text-right my-auto" for="type">Type de Formation</label>
+			<input class="form-control col-8" type="text" ng-model = "participant.typeFormation" placeholder="FPN ou CDN">
+		</div>
+		<div class="form-group row">
+			<div class="offset-2">
+				<button class="btn btn-primary" ng-click = " participant.enregistreParticipant()">Enregistrer</button>
+			</div>
+		</div>
+
+</fieldset>
+
+</form>
+</div>

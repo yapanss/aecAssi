@@ -1,7 +1,77 @@
 <h1  style="background-color:pink" class="text-center mb-5">Liste des Soirées Noces </h1>
 
-<div class="container mb-5 bg-faded">
+<div class="container mb-5">
 
-     {{soiree.listeSoirees}}
+<table st-table="soiree.listeSoirees"   class="table table-striped table-bordered table-responsive" style="font-size: 12px">
+<thead>
+    <tr>
+      <th colspan="9">
+        <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+      </th>
+    </tr>
+    <tr style="background-color: pink">
+      <th>Numéro</th>
+      <th>Cycle</th>
+      <th>Date</th>
+      <th>Lieu</th>
+      <th>Nombre Participants</th>
+      <th>Nombre nouveaux</th>
+      <th>Nombre VEA</th>
+      <th colspan="2" class="text-center">Actions</th>
+    </tr>    
+</thead>
+<tbody>
+  <tr ng-repeat="item in soiree.listeSoirees">
+    <td>{{$index+1}}</td> 
+    <td ng-if="soiree.edite[$index]==false">{{item.cycle}}</td>
+    <td ng-if="soiree.edite[$index]==true"><input type="text" ng-model="item.cycle"></td>
+
+    <td ng-if="soiree.edite[$index]==false">{{item.dateCellule}}</td>
+    <td ng-if="soiree.edite[$index]==true"><input type="date" ng-model="item.dateCellule"></td>
+    <td ng-if="soiree.edite[$index]==false">{{item.lieuCellule}}</td>
+    <td ng-if="soiree.edite[$index]==true"><input type="text" ng-model="item.lieuCellule"></td>
+    <td class="bg-info" ng-if='soiree.edite[$index]==false'>{{item.nombreParticipants}}</td>
+    <td ng-if="soiree.edite[$index]==true"><input type="text" ng-model="item.nombreParticipants"></td>
+    
+    <td class="bg-warning" ng-if='soiree.edite[$index]==false'>{{item.nombreNouveaux}}</td>
+    <td ng-if="soiree.edite[$index]==true"><input type="text" ng-model="item.nombreNouveaux"></td>
+
+    
+
+    <td class="bg-info" ng-if='soiree.edite[$index]==false'>{{item.nombreVieAbondance}}</td>
+    <td ng-if="soiree.edite[$index]==true"><input type="text" ng-model="item.nombreVieAbondance"></td>
+
+    <td ng-if='soiree.edite[$index]==false'><button class="btn btn-danger" ng-click="soiree.supprimeSoiree($index)">supprimer</button></td>
+
+    <td ng-if="soiree.edite[$index]==true">
+      <button ng-click="soiree.modifieSoiree($index)" class="btn btn-success">Modifier</button>
+    </td>
+
+    <td ng-if="soiree.edite[$index]==true">
+      <button class="btn btn-default" ng-click="soiree.neModifiePasSoiree($index)">Retour</button>
+    </td>
+    
+    <td><button ng-if="soiree.edite[$index]==false" ng-click="soiree.editeSoiree($index)" class="btn btn-primary">
+        Editer
+      </button>
+    </td>
+
+  </tr>
+</tbody>
+<!-- <tfoot>
+    <tr>
+      <td colspan="5" class="text-center">
+        <div st-pagination="" st-items-by-page="itemsByPage"></div>
+      </td>
+    </tr>
+</tfoot> -->
+
+</table>
 
 </div>
+
+
+  
+
+      
+

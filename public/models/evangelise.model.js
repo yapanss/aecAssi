@@ -3,8 +3,7 @@ var Schema = mongoose.Schema;
 
 var EvangeliseSchema = new Schema({
   nom:{
-    type:String,
-    required:true
+    type:String
   },
   contact:{
     reseau:{

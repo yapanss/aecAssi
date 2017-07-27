@@ -6,10 +6,10 @@ evangeliseController.inject = ['evangeliseService'];
 function evangeliseController(evangeliseService){
   var ctrl = this;
 
-  ctrl.nom = "Koffi";
+  ctrl.nom = "";
   ctrl.contact = {};
-  ctrl.date = "";
-  ctrl.lieu = "port bouet";
+  ctrl.dateEvangelisation = "";
+  ctrl.lieuEvangelisation = "";
 
    console.log("EH, CA MARCHE !");
 

@@ -16,6 +16,7 @@ function celluleController(celluleService){
   ctrl.dateCellule = "";
   ctrl.lieuCellule = "";
   ctrl.natureCellule = "";
+  ctrl.soiree = {};
 
   ctrl.enregistreFormation = function(){
     console.log("BONJOUR: ", ctrl);

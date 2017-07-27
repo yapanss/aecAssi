@@ -1,0 +1,66 @@
+
+
+
+<h2 class="text-center bg-info">Liste Du Personnel</h2>
+
+<div class="container mb-5">
+
+<table st-table="personnel.listePersonnel"   class="table table-striped table-bordered table-responsive">
+<thead>
+    <tr style="background-color: lightgreen">
+      <th>Numéro</th>
+      <th>Login</th>
+      <th>Titre</th>
+      <th>Nom</th>
+      <th colspan="2" class="text-center">Actions</th>
+
+    </tr>
+    <tr>
+      <th colspan="6">
+        <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+      </th>
+
+    </tr>
+    
+</thead>
+  
+<tbody>
+  <tr ng-repeat="item in personnel.listePersonnel">
+    <td>{{$index+1}}</td> 
+    <td ng-if="personnel.edite[$index]==false">{{item.login}}</td>
+    <td ng-if="personnel.edite[$index]==true"><input type="text" ng-model="item.login"></td>
+    <td ng-if="personnel.edite[$index]==false">{{item.titre}}</td>
+    <td ng-if="personnel.edite[$index]==true"><input type="text" ng-model="item.titre"></td>
+    <td ng-if="personnel.edite[$index]==false">{{item.nom}}</td>
+    <td ng-if="personnel.edite[$index]==true"><input type="text" ng-model="item.nom"></td>
+    
+    <td ng-if='personnel.edite[$index]==false'><button class="btn btn-danger" ng-click="personnel.supprimePersonnel($index)">supprimer</button></td>
+    <td ng-if="personnel.edite[$index]==true">
+      <button class="btn btn-default" ng-click="personnel.neModifiePasPersonnel($index)">Retour</button>
+    </td>
+
+    <td ng-if="personnel.edite[$index]==true">
+      <button ng-click="personnel.modifiePersonnel($index)" class="btn btn-success">Modifier</button>
+    </td>
+    
+    <td ng-if="personnel.edite[$index]==false"><button  ng-click="personnel.editePersonnel($index)" class="btn btn-primary">
+        Editer
+      </button>
+    </td>
+    
+    
+    
+
+
+  </tr>
+</tbody>
+<!-- <tfoot>
+    <tr>
+      <td colspan="5" class="text-center">
+        <div st-pagination="" st-items-by-page="itemsByPage"></div>
+      </td>
+    </tr>
+</tfoot> -->
+
+</table>
+</div>

@@ -77,6 +77,16 @@ router.route('/api/formation/:formation_id')
     if(req.body.lieuCellule){
       formation.lieuCellule = req.body.lieuCellule;
     }
+
+    formation.save(function(err){
+      if(err){
+        res.send(err);
+      }
+      else{
+        res.json({message : "formation modifiée avec succès"});
+      }
+    });
+
   });
 });
 

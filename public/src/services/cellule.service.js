@@ -70,5 +70,24 @@ function celluleService($http){
       console.log("OUPS, UNE ERREUR EST SURVENUE...");
     });
   };
+
+  service.modifieSoiree = function(soiree_id, donneesSoiree){
+    return $http.put('api/soireenoce/' + soiree_id, donneesSoiree)
+    .then(function success(result){
+      console.log('TOUT EST OK');
+      return result;
+    });
+  };
+
+  service.supprimeSoiree = function(soiree_id){
+    return $http.delete('api/soireenoce/'+ soiree_id)
+    .then(function success(reponse){
+      service.message = reponse;
+      return service.message;
+    }, function error(){
+      console.log('OUPS, UNE ERREUR EST SURVENUE');
+    });
+  };
+
 };
 })();
